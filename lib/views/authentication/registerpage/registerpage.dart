@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../components/passfield.dart';
-import '../components/txtfield.dart';
+import '../../components/passfield.dart';
+import '../../components/txtfield.dart';
 
 class MyWidget extends StatelessWidget {
   const MyWidget({super.key});

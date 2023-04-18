@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:crocodic_login/constant.dart';
-import 'package:crocodic_login/views/loginpage/loginpage.dart';
+import 'package:crocodic_login/views/authentication/loginpage/loginpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
