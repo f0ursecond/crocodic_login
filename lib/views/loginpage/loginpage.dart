@@ -31,37 +31,39 @@ class LoginPage extends StatelessWidget {
                 width: sizeWidth / 2,
               ),
             ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: const [
-                    SizedBox(
-                      height: 10,
-                    ),
-                    txtField(
-                      text: 'Email',
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    passField(text: 'Password'),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    passField(
-                      text: 'Masukan Kembali Password',
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    btn(),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    dividerWidget(),
-                    googleContainer(),
-                  ],
+            SingleChildScrollView(
+              child: Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: const [
+                      SizedBox(
+                        height: 10,
+                      ),
+                      txtField(
+                        text: 'Email',
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      passField(text: 'Password'),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      passField(
+                        text: 'Masukan Kembali Password',
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      btn(),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      dividerWidget(),
+                      googleContainer(),
+                    ],
+                  ),
                 ),
               ),
             )
