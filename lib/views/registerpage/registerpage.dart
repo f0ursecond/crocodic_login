@@ -1,22 +1,18 @@
-import 'package:crocodic_login/constant.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
-import '../components/loginsection.dart';
 import '../components/passfield.dart';
 import '../components/txtfield.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class MyWidget extends StatelessWidget {
+  const MyWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     double sizeHeight = MediaQuery.of(context).size.height;
     double sizeWidth = MediaQuery.of(context).size.width;
-
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Login Page'),
+        title: Text('Register Page'),
         elevation: 0,
         centerTitle: true,
       ),
@@ -36,6 +32,9 @@ class LoginPage extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
                   children: const [
+                    txtField(
+                      text: 'Nama',
+                    ),
                     SizedBox(
                       height: 10,
                     ),
@@ -57,44 +56,15 @@ class LoginPage extends StatelessWidget {
                     ),
                     btn(),
                     SizedBox(
-                      height: 30,
+                      height: 5,
                     ),
-                    dividerWidget(),
-                    googleContainer(),
+                    txtBack()
                   ],
                 ),
               ),
             )
           ],
         ),
-      ),
-    );
-  }
-}
-
-class dividerWidget extends StatelessWidget {
-  const dividerWidget({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          Expanded(
-            child: Divider(
-              color: kSecondaryColor,
-            ),
-          ),
-          Text('Or Login With'),
-          Expanded(
-            child: Divider(
-              color: kSecondaryColor,
-            ),
-          ),
-        ],
       ),
     );
   }
@@ -127,7 +97,7 @@ class btn extends StatelessWidget {
       width: double.infinity,
       child: ElevatedButton(
         onPressed: () {},
-        child: const Text('Login'),
+        child: const Text('Register'),
       ),
     );
   }
