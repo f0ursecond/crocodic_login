@@ -1,3 +1,4 @@
+import 'package:crocodic_login/views/authentication/loginpage/loginpage.dart';
 import 'package:flutter/material.dart';
 
 import '../../components/passfield.dart';
@@ -27,39 +28,41 @@ class MyWidget extends StatelessWidget {
                 width: sizeWidth / 2,
               ),
             ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: const [
-                    txtField(
-                      text: 'Nama',
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    txtField(
-                      text: 'Email',
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    passField(text: 'Password'),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    passField(
-                      text: 'Masukan Kembali Password',
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    btn(),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    txtBack()
-                  ],
+            SingleChildScrollView(
+              child: Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: const [
+                      txtField(
+                        text: 'Nama',
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      txtField(
+                        text: 'Email',
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      passField(text: 'Password'),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      passField(
+                        text: 'Masukan Kembali Password',
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      btn(),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      txtBack()
+                    ],
+                  ),
                 ),
               ),
             )
@@ -79,7 +82,14 @@ class txtBack extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: TextButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => LoginPage(),
+            ),
+          );
+        },
         child: Text('Back To Login'),
       ),
     );
