@@ -20,6 +20,7 @@ class _passFieldState extends State<passField> {
       child: TextField(
         obscureText: obsecureText,
         decoration: InputDecoration(
+          prefixIcon: Icon(Icons.lock),
           suffixIcon: IconButton(
             onPressed: () {
               setState(() {

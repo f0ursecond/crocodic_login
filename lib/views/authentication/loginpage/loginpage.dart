@@ -42,6 +42,7 @@ class LoginPage extends StatelessWidget {
                       ),
                       txtField(
                         text: 'Email',
+                        iconcuy: Icon(Icons.mail),
                       ),
                       SizedBox(
                         height: 10,

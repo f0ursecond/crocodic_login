@@ -36,12 +36,14 @@ class MyWidget extends StatelessWidget {
                     children: const [
                       txtField(
                         text: 'Nama',
+                        iconcuy: Icon(Icons.person),
                       ),
                       SizedBox(
                         height: 10,
                       ),
                       txtField(
                         text: 'Email',
+                        iconcuy: Icon(Icons.mail),
                       ),
                       SizedBox(
                         height: 10,
