@@ -65,10 +65,10 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/crocodic.png
-    - assets/images/grow.svg
-    - assets/images/coding.svg
-    - assets/images/suport.svg
-    - assets/images/murid.svg
+    - assets/svg/grow.svg
+    - assets/svg/coding.svg
+    - assets/svg/suport.svg
+    - assets/svg/murid.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

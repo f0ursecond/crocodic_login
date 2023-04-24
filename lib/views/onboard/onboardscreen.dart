@@ -25,7 +25,7 @@ class OnBoardingScreen extends StatelessWidget {
             image: Center(
               child: Transform(
                 transform: Matrix4.translationValues(0, 50, 0),
-                child: SvgPicture.asset('assets/images/grow.svg'),
+                child: SvgPicture.asset('assets/svg/grow.svg'),
               ),
             ),
           ),
@@ -38,7 +38,7 @@ class OnBoardingScreen extends StatelessWidget {
             image: Center(
               child: Transform(
                 transform: Matrix4.translationValues(0, 50, 0),
-                child: SvgPicture.asset('assets/images/coding.svg'),
+                child: SvgPicture.asset('assets/svg/coding.svg'),
               ),
             ),
           ),
@@ -51,7 +51,7 @@ class OnBoardingScreen extends StatelessWidget {
             image: Center(
               child: Transform(
                 transform: Matrix4.translationValues(0, 50, 0),
-                child: SvgPicture.asset('assets/images/suport.svg'),
+                child: SvgPicture.asset('assets/svg/suport.svg'),
               ),
             ),
           ),
@@ -67,7 +67,7 @@ class OnBoardingScreen extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(15.0),
                   child: SvgPicture.asset(
-                    'assets/images/murid.svg',
+                    'assets/svg/murid.svg',
                   ),
                 ),
               ),
