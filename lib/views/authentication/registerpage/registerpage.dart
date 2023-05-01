@@ -60,7 +60,12 @@ class MyWidget extends StatelessWidget {
                     ),
                     ButtonPrimary(
                       text: 'Resister',
-                      press: () {},
+                      press: () {
+                        Navigator.pushNamed(
+                          context,
+                          '/HomePage',
+                        );
+                      },
                     ),
                     const SizedBox(
                       height: 5,

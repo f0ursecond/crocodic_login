@@ -1,5 +1,9 @@
+import 'package:crocodic_login/views/authentication/details/detailspage.dart';
+import 'package:crocodic_login/views/home/homepage.dart';
 import 'package:crocodic_login/views/onboard/onboardscreen.dart';
 import 'package:flutter/material.dart';
+
+import 'views/authentication/registerpage/registerpage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,20 +16,27 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          // This is the theme of your application.
-          //
-          // Try running your application with "flutter run". You'll see the
-          // application has a blue toolbar. Then, without quitting the app, try
-          // changing the primarySwatch below to Colors.green and then invoke
-          // "hot reload" (press "r" in the console where you ran "flutter run",
-          // or simply save your changes to "hot reload" in a Flutter IDE).
-          // Notice that the counter didn't reset back to zero; the application
-          // is not restarted.
-          primarySwatch: Colors.blue,
-        ),
-        home: const OnBoardingScreen());
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        // This is the theme of your application.
+        //
+        // Try running your application with "flutter run". You'll see the
+        // application has a blue toolbar. Then, without quitting the app, try
+        // changing the primarySwatch below to Colors.green and then invoke
+        // "hot reload" (press "r" in the console where you ran "flutter run",
+        // or simply save your changes to "hot reload" in a Flutter IDE).
+        // Notice that the counter didn't reset back to zero; the application
+        // is not restarted.
+        primarySwatch: Colors.blue,
+      ),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const OnBoardingScreen(),
+        '/RegisterPage': (context) => const MyWidget(),
+        '/HomePage': (context) => const HomePage(),
+        '/DetailsPage': (context) => const DetailsPage(),
+      },
+    );
   }
 }
