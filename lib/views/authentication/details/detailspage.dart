@@ -1,5 +1,3 @@
-import 'package:crocodic_login/userlist.dart';
-import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 
 class DetailsPage extends StatefulWidget {
@@ -15,15 +13,16 @@ class _DetailsPageState extends State<DetailsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: WelcomeText(context, userList),
+        title: welcomeText(context),
       ),
     );
   }
 }
 
+// ignore: non_constant_identifier_names
 @override
-Widget WelcomeText(BuildContext context, index) {
-  return Text(
+Widget welcomeText(BuildContext context) {
+  return const Text(
     // ignore: prefer_interpolation_to_compose_strings
     'Welcome ',
   );

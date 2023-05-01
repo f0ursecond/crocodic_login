@@ -79,7 +79,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    var faker = new Faker();
+    var faker = Faker();
 
     return Scaffold(
       appBar: AppBar(
@@ -103,7 +103,7 @@ class _HomePageState extends State<HomePage> {
                 },
                 trailing: TextButton(
                   onPressed: () {},
-                  child: Text('->'),
+                  child: const Text('->'),
                 ),
                 title: Text(
                   orang.firstName,
