@@ -1,8 +1,9 @@
-import 'package:crocodic_login/views/authentication/loginpage/loginpage.dart';
+import 'package:crocodic_login/views/authentication/components/btnprimary.dart';
+import 'package:crocodic_login/views/authentication/components/txtback.dart';
 import 'package:flutter/material.dart';
 
-import '../../components/passfield.dart';
-import '../../components/txtfield.dart';
+import '../components/passfield.dart';
+import '../components/txtfield.dart';
 
 class MyWidget extends StatelessWidget {
   const MyWidget({super.key});
@@ -13,7 +14,7 @@ class MyWidget extends StatelessWidget {
     double sizeWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Register Page'),
+        title: const Text('Register Page'),
         elevation: 0,
         centerTitle: true,
       ),
@@ -29,87 +30,51 @@ class MyWidget extends StatelessWidget {
               ),
             ),
             SingleChildScrollView(
-              child: Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: const [
-                      txtField(
-                        text: 'Nama',
-                        iconcuy: Icon(Icons.person),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      txtField(
-                        text: 'Email',
-                        iconcuy: Icon(Icons.mail),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      passField(text: 'Password'),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      passField(
-                        text: 'Masukan Kembali Password',
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      btn(),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      txtBack()
-                    ],
-                  ),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    const TxtField(
+                      text: 'Nama',
+                      iconcuy: Icon(Icons.person),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const TxtField(
+                      text: 'Email',
+                      iconcuy: Icon(Icons.mail),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const PassField(text: 'Password'),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const PassField(
+                      text: 'Masukan Kembali Password',
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    ButtonPrimary(
+                      text: 'Resister',
+                      press: () {},
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    TxtBack(
+                      text: 'Kembali Ke Login',
+                      press: () {},
+                    ),
+                  ],
                 ),
               ),
             )
           ],
         ),
-      ),
-    );
-  }
-}
-
-class txtBack extends StatelessWidget {
-  const txtBack({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: TextButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => LoginPage(),
-            ),
-          );
-        },
-        child: Text('Back To Login'),
-      ),
-    );
-  }
-}
-
-class btn extends StatelessWidget {
-  const btn({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      child: ElevatedButton(
-        onPressed: () {},
-        child: const Text('Register'),
       ),
     );
   }

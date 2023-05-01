@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
 
-class passField extends StatefulWidget {
+class PassField extends StatefulWidget {
   final String text;
-  const passField({
+  const PassField({
     Key? key,
     required this.text,
   }) : super(key: key);
 
   @override
-  State<passField> createState() => _passFieldState();
+  State<PassField> createState() => _PassFieldState();
 }
 
-class _passFieldState extends State<passField> {
+class _PassFieldState extends State<PassField> {
   bool obsecureText = true;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       child: TextField(
         obscureText: obsecureText,
         decoration: InputDecoration(
-          prefixIcon: Icon(Icons.lock),
+          prefixIcon: const Icon(Icons.lock),
           suffixIcon: IconButton(
             onPressed: () {
               setState(() {
@@ -33,7 +33,7 @@ class _passFieldState extends State<passField> {
                   : Icons.visibility_outlined,
             ),
           ),
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
           labelText: widget.text,
         ),
       ),

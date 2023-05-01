@@ -1,7 +1,4 @@
-import 'dart:ui';
-
 import 'package:crocodic_login/constant.dart';
-import 'package:crocodic_login/views/authentication/loginpage/loginpage.dart';
 import 'package:crocodic_login/views/authentication/registerpage/registerpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -18,7 +15,7 @@ class OnBoardingScreen extends StatelessWidget {
         pages: [
           PageViewModel(
             title: '',
-            bodyWidget: containerGrow(
+            bodyWidget: ContainerGrow(
               title: 'Grow Exponentially',
               subtitle: description1,
             ),
@@ -31,7 +28,7 @@ class OnBoardingScreen extends StatelessWidget {
           ),
           PageViewModel(
             title: '',
-            bodyWidget: containerGrow(
+            bodyWidget: ContainerGrow(
               title: 'Build High Quality Apps',
               subtitle: description2,
             ),
@@ -44,7 +41,7 @@ class OnBoardingScreen extends StatelessWidget {
           ),
           PageViewModel(
             title: '',
-            bodyWidget: containerGrow(
+            bodyWidget: ContainerGrow(
               title: 'Fast Maintenance Support',
               subtitle: description3,
             ),
@@ -57,7 +54,7 @@ class OnBoardingScreen extends StatelessWidget {
           ),
           PageViewModel(
             title: '',
-            bodyWidget: containerGrow(
+            bodyWidget: ContainerGrow(
               title: 'Welcome To Crocodic Academy',
               subtitle: description4,
             ),
@@ -91,9 +88,9 @@ class OnBoardingScreen extends StatelessWidget {
   }
 }
 
-class containerGrow extends StatelessWidget {
+class ContainerGrow extends StatelessWidget {
   final String title, subtitle;
-  const containerGrow({
+  const ContainerGrow({
     Key? key,
     required this.title,
     required this.subtitle,
@@ -101,7 +98,7 @@ class containerGrow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       child: Padding(
         padding: const EdgeInsets.all(8.0),

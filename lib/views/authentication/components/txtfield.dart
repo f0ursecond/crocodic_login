@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class txtField extends StatelessWidget {
+class TxtField extends StatelessWidget {
   final String text;
   final Icon iconcuy;
-  const txtField({
+  const TxtField({
     Key? key,
     required this.text,
     required this.iconcuy,
@@ -11,11 +11,11 @@ class txtField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       child: TextField(
         decoration: InputDecoration(
           prefixIcon: iconcuy,
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
           labelText: text,
         ),
       ),
