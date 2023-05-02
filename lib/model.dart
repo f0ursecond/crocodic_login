@@ -10,8 +10,9 @@ class PersonElement {
   String firstName;
   String lastName;
   String gender;
-  int age;
+  String age;
   String number;
+  String imageUrl;
 
   PersonElement({
     required this.firstName,
@@ -19,6 +20,7 @@ class PersonElement {
     required this.gender,
     required this.age,
     required this.number,
+    required this.imageUrl,
   });
 
   factory PersonElement.fromJson(Map<String, dynamic> person) => PersonElement(
@@ -27,5 +29,6 @@ class PersonElement {
         gender: person["gender"],
         age: person["age"],
         number: person["number"],
+        imageUrl: person["imageUrl"],
       );
 }
