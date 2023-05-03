@@ -1,9 +1,9 @@
-import 'package:crocodic_login/constant.dart';
 import 'package:crocodic_login/model.dart';
+import 'package:crocodic_login/views/details/components/containerdata.dart';
+import 'package:crocodic_login/views/details/components/header.dart';
 import 'package:flutter/material.dart';
 
 class DetailsPage extends StatelessWidget {
-  static String routeName = '/DetailsPage';
   final PersonElement person;
   const DetailsPage({super.key, required this.person});
 
@@ -23,24 +23,9 @@ class DetailsPage extends StatelessWidget {
           SingleChildScrollView(
             child: Column(
               children: [
-                Container(
-                  decoration: const BoxDecoration(
-                    color: kSecondaryColor,
-                  ),
-                  width: sizeWidth * 1,
-                  height: sizeHeight / 4,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Text(
-                        'PROFILE SETTINGS',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ],
-                  ),
+                HeaderContainer(
+                  sizeWidth: sizeWidth,
+                  sizeHeight: sizeHeight,
                 ),
                 Transform(
                   transform: Matrix4.translationValues(0, -50, 0),
@@ -49,55 +34,10 @@ class DetailsPage extends StatelessWidget {
                     backgroundImage: NetworkImage(person.imageUrl),
                   ),
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                    color: kSecondaryColor,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  width: sizeWidth * 0.9,
-                  height: sizeHeight * 0.3,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Name : ${person.firstName} ${person.lastName}',
-                              style: const TextStyle(
-                                fontSize: 22,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                            Text(
-                              'Gender : ${person.gender}',
-                              style: const TextStyle(
-                                fontSize: 22,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                            Text(
-                              'Age: ${person.age}',
-                              style: const TextStyle(
-                                fontSize: 22,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                            Text(
-                              'Phone Number : ${person.number}',
-                              style: const TextStyle(
-                                fontSize: 22,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
+                ContainerData(
+                  sizeWidth: sizeWidth,
+                  sizeHeight: sizeHeight,
+                  person: person,
                 ),
               ],
             ),

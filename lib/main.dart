@@ -1,4 +1,3 @@
-import 'package:crocodic_login/views/details/detailspage.dart';
 import 'package:crocodic_login/views/home/homepage.dart';
 import 'package:crocodic_login/views/onboard/onboardscreen.dart';
 import 'package:crocodic_login/views/scrollview/scrollview.dart';

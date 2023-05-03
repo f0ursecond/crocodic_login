@@ -12,7 +12,7 @@ class ScrollViewPage extends StatelessWidget {
             pinned: true,
             expandedHeight: 250.0,
             flexibleSpace: FlexibleSpaceBar(
-              title: Text('CustomScrollView'),
+              title: Text('Sliver App Bar'),
               centerTitle: true,
             ),
           ),
@@ -37,11 +37,10 @@ class ScrollViewPage extends StatelessWidget {
                   height: MediaQuery.of(context).size.height * 0.5,
                   alignment: Alignment.center,
                   color: Colors.teal[100 * (index % 9)],
-                  child: Image.network(
-                      'https://source.unsplash.com/featured/300x202'),
+                  child: Text('Nomor $index'),
                 );
               },
-              childCount: 20,
+              childCount: 50,
             ),
           ),
         ],
