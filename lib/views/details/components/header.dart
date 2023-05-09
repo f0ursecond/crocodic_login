@@ -1,4 +1,3 @@
-import 'package:crocodic_login/constant.dart';
 import 'package:flutter/material.dart';
 
 class HeaderContainer extends StatelessWidget {
@@ -15,7 +14,7 @@ class HeaderContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
-        color: kSecondaryColor,
+        color: Colors.indigoAccent,
       ),
       width: sizeWidth * 1,
       height: sizeHeight / 4,

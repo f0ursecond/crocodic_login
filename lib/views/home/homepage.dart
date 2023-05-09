@@ -1,4 +1,3 @@
-import 'package:crocodic_login/constant.dart';
 import 'package:crocodic_login/model.dart';
 import 'package:crocodic_login/views/details/detailspage.dart';
 
@@ -20,7 +19,7 @@ class _HomePageState extends State<HomePage> {
       {
         "firstName": "Joe",
         "lastName": "Jackson",
-        "gender": "male",
+        "gender": "Male",
         "age": "28",
         "number": "7349282382",
         "imageUrl":
@@ -29,7 +28,7 @@ class _HomePageState extends State<HomePage> {
       {
         "firstName": "James",
         "lastName": "Smith",
-        "gender": "male",
+        "gender": "Male",
         "age": "21",
         "number": "5678568567",
         "imageUrl":
@@ -38,7 +37,7 @@ class _HomePageState extends State<HomePage> {
       {
         "firstName": "Trevor",
         "lastName": "Philips",
-        "gender": "male",
+        "gender": "Male",
         "age": "22",
         "number": "456754675",
         "imageUrl":
@@ -47,7 +46,7 @@ class _HomePageState extends State<HomePage> {
       {
         "firstName": "Franklin",
         "lastName": "Clinton",
-        "gender": "male",
+        "gender": "Male",
         "age": "23",
         "number": "456754675",
         "imageUrl":
@@ -56,7 +55,7 @@ class _HomePageState extends State<HomePage> {
       {
         "firstName": "Michael",
         "lastName": "Gunawan",
-        "gender": "male",
+        "gender": "Male",
         "age": "24",
         "number": "456754675",
         "imageUrl":
@@ -65,7 +64,7 @@ class _HomePageState extends State<HomePage> {
       {
         "firstName": "Messi",
         "lastName": "Leo",
-        "gender": "male",
+        "gender": "Male",
         "age": "38",
         "number": "456754675",
         "imageUrl":
@@ -74,7 +73,7 @@ class _HomePageState extends State<HomePage> {
       {
         "firstName": "Ronaldo",
         "lastName": "Bara",
-        "gender": "male",
+        "gender": "Male",
         "age": "48",
         "number": "456754675",
         "imageUrl":
@@ -83,12 +82,21 @@ class _HomePageState extends State<HomePage> {
       {
         "firstName": "Obama",
         "lastName": "Pratama",
-        "gender": "male",
+        "gender": "Male",
         "age": "58",
         "number": "456754675",
         "imageUrl":
             "https://images.unsplash.com/photo-1580130379624-3a069adbffc5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8b2JhbWF8ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60"
-      }
+      },
+      {
+        "firstName": "Taylor",
+        "lastName": "Swift",
+        "gender": "Female",
+        "age": "58",
+        "number": "456754675",
+        "imageUrl":
+            "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80"
+      },
     ];
 
     return data.map<PersonElement>(PersonElement.fromJson).toList();
@@ -98,9 +106,10 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ListView'),
+        title: const Text(
+          'ListView',
+        ),
         elevation: 0,
-        backgroundColor: kPrimaryColor,
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -109,6 +118,11 @@ class _HomePageState extends State<HomePage> {
           itemBuilder: (context, index) {
             final orang = person[index];
             return Card(
+              shape: RoundedRectangleBorder(
+                side: BorderSide(
+                  color: Theme.of(context).focusColor,
+                ),
+              ),
               child: ListTile(
                 onTap: () {
                   Navigator.of(context).push(
@@ -121,23 +135,26 @@ class _HomePageState extends State<HomePage> {
                 },
                 trailing: TextButton(
                   onPressed: () {},
-                  child: const Icon(
-                    Icons.arrow_circle_right,
-                    color: Colors.black,
+                  child: Icon(
+                    Icons.edit,
+                    color: Theme.of(context).iconTheme.color,
                   ),
                 ),
                 title: Row(
                   children: [
                     Text(
                       orang.firstName,
+                      style: Theme.of(context).textTheme.titleMedium,
                     ),
                     Text(
                       ' ${orang.lastName}',
+                      style: Theme.of(context).textTheme.titleMedium,
                     ),
                   ],
                 ),
                 subtitle: Text(
                   '+62 ${orang.number}',
+                  style: Theme.of(context).textTheme.titleMedium,
                 ),
                 leading: Image.network(
                   orang.imageUrl,
@@ -150,14 +167,18 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Theme.of(context).primaryColor,
         onPressed: () {
           Navigator.pushNamed(
             context,
             '/ScrollPage',
           );
         },
-        child: const Center(
-          child: Icon(Icons.arrow_right_sharp),
+        child: Center(
+          child: Icon(
+            Icons.arrow_right_sharp,
+            color: Theme.of(context).iconTheme.color,
+          ),
         ),
       ),
     );
