@@ -1,7 +1,9 @@
+import 'package:crocodic_login/controller/darkmode_controller.dart';
 import 'package:crocodic_login/model.dart';
 import 'package:crocodic_login/views/details/detailspage.dart';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HomePage extends StatefulWidget {
   static String routeName = '/HomePage';
@@ -104,8 +106,17 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final c = Get.find<ChangeTheme>();
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () => c.isDarkTheme(),
+            icon: c.isDark.value
+                ? const Icon(Icons.dark_mode)
+                : const Icon(Icons.light_mode),
+          )
+        ],
         title: const Text(
           'ListView',
         ),
