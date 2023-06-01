@@ -1,11 +1,3 @@
-class Person {
-  List<PersonElement> person;
-
-  Person({
-    required this.person,
-  });
-}
-
 class PersonElement {
   String firstName;
   String lastName;
@@ -31,4 +23,34 @@ class PersonElement {
         number: person["number"],
         imageUrl: person["imageUrl"],
       );
+}
+
+class Biodata {
+  String imageUrl;
+  String nama;
+  String kota;
+  String tgllahir;
+  String description;
+
+  Biodata({
+    required this.imageUrl,
+    required this.nama,
+    required this.kota,
+    required this.tgllahir,
+    required this.description,
+  });
+
+  setData({
+    required String imageUrl,
+    required String nama,
+    required String kota,
+    required String tgllahir,
+    required String description,
+  }) {
+    this.imageUrl = imageUrl;
+    this.nama = nama;
+    this.kota = kota;
+    this.tgllahir = tgllahir;
+    this.description = description;
+  }
 }
