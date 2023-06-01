@@ -1,4 +1,5 @@
 import 'package:crocodic_login/controller/darkmode_controller.dart';
+import 'package:crocodic_login/views/aboutme/aboutme.dart';
 import 'package:crocodic_login/views/calculator/calculator_view.dart';
 import 'package:crocodic_login/views/home/homepage.dart';
 import 'package:crocodic_login/views/onboard/onboardscreen.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: cTheme.isDark.value ? ThemeData.dark() : ThemeData.light(),
-        initialRoute: '/CalculatorPage',
+        initialRoute: '/AboutMePage',
         routes: {
           '/': (context) => const OnBoardingScreen(),
           '/RegisterPage': (context) => const MyWidget(),
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
           '/ScrollPage': (context) => const ScrollViewPage(),
           '/CalculatorPage': (context) => const CalculatorView(),
           '/ShopingListPage': (context) => const ShoppingListScreen(),
+          '/AboutMePage': (context) => const AboutMePage(),
         },
       ),
     );
