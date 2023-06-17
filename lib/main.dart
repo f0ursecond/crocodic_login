@@ -1,7 +1,8 @@
 import 'package:crocodic_login/controller/darkmode_controller.dart';
-import 'package:crocodic_login/views/aboutme/aboutme.dart';
+import 'package:crocodic_login/views/authentication/splashscreen/splash_screen.dart';
 import 'package:crocodic_login/views/calculator/calculator_view.dart';
 import 'package:crocodic_login/views/home/homepage.dart';
+import 'package:crocodic_login/views/lifecycle/lifecycle.dart';
 import 'package:crocodic_login/views/onboard/onboardscreen.dart';
 import 'package:crocodic_login/views/scrollview/scrollview.dart';
 import 'package:crocodic_login/views/kelas/classlist.dart';
@@ -17,7 +18,6 @@ class MyApp extends StatelessWidget {
   final cTheme = Get.put(ChangeTheme());
   MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return Obx(
@@ -25,9 +25,11 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: cTheme.isDark.value ? ThemeData.dark() : ThemeData.light(),
-        initialRoute: '/ClassListPage',
+        initialRoute: '/',
         routes: {
-          '/': (context) => const OnBoardingScreen(),
+          '/': (context) => const SplashScreenPage(),
+          '/active': (context) => const ScreenActive(),
+          '/onboard': (context) => const OnBoardingScreen(),
           '/RegisterPage': (context) => const MyWidget(),
           '/HomePage': (context) => const HomePage(),
           '/ScrollPage': (context) => const ScrollViewPage(),
