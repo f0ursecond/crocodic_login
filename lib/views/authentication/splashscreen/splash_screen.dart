@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class SplashScreenPage extends StatefulWidget {
   const SplashScreenPage({super.key});
@@ -11,8 +12,17 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 5), () {
-      Navigator.popAndPushNamed(context, '/RegisterPage');
+  }
+
+  Future<void> checkState() async {
+    const storage = FlutterSecureStorage();
+    String id = await storage.read(key: 'id') ?? '';
+    Future.delayed(const Duration(seconds: 3), () {
+      if (id.isNotEmpty) {
+        Navigator.popAndPushNamed(context, '/ClassListPage');
+      } else {
+        Navigator.popAndPushNamed(context, '/LoginPage');
+      }
     });
   }
 
