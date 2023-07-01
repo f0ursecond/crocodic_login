@@ -1,12 +1,59 @@
 import 'package:crocodic_login/views/authentication/components/btnprimary.dart';
 import 'package:crocodic_login/views/authentication/components/txtback.dart';
 import 'package:flutter/material.dart';
+import 'package:crocodic_login/db_user/app_database.dart';
+import 'package:crocodic_login/db_user/user.dart';
 
 import '../components/passfield.dart';
 import '../components/txtfield.dart';
 
-class MyWidget extends StatelessWidget {
+class MyWidget extends StatefulWidget {
   const MyWidget({super.key});
+
+  @override
+  State<MyWidget> createState() => _MyWidgetState();
+}
+
+class _MyWidgetState extends State<MyWidget> {
+  final namaCtrl = TextEditingController();
+  final emailCtrl = TextEditingController();
+  final passwordCtrl = TextEditingController();
+  List<User> listUser = [];
+
+  @override
+  void initState() {
+    super.initState();
+    getAllData();
+  }
+
+  Future<void> getAllData() async {
+    final database = await databaseLocal;
+    final datas = await database.userDao.findAllUser();
+
+    setState(() {
+      listUser = datas;
+    });
+  }
+
+  Future<User?> getData({required int id}) async {
+    final database = await databaseLocal;
+    final data = await database.userDao.findUserById(id);
+    return data;
+  }
+
+  Future<void> saveData({
+    required String nama,
+    required String email,
+    required String password,
+  }) async {
+    final database = await databaseLocal;
+    await database.userDao.insertUser(User(
+      nama: nama,
+      email: email,
+      password: password,
+    ));
+    getAllData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,40 +66,43 @@ class MyWidget extends StatelessWidget {
         centerTitle: true,
       ),
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              margin: EdgeInsets.only(top: sizeHeight * 0.02),
-              child: Image.asset(
-                'assets/images/crocodic.png',
-                width: sizeWidth / 2,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                margin: EdgeInsets.only(top: sizeHeight * 0.02),
+                child: Image.asset(
+                  'assets/images/crocodic.png',
+                  width: sizeWidth / 2,
+                ),
               ),
-            ),
-            SingleChildScrollView(
-              child: Padding(
+              Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
                   children: [
-                    const TxtField(
+                    TxtField(
+                      controller: namaCtrl,
                       text: 'Nama',
                       iconcuy: Icon(Icons.person),
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 10,
                     ),
-                    const TxtField(
+                    TxtField(
+                      controller: emailCtrl,
                       text: 'Email',
                       iconcuy: Icon(Icons.mail),
                     ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    PassField(controller: passwordCtrl, text: 'Password'),
                     const SizedBox(
                       height: 10,
                     ),
-                    const PassField(text: 'Password'),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const PassField(
+                    PassField(
+                      controller: passwordCtrl,
                       text: 'Masukan Kembali Password',
                     ),
                     const SizedBox(
@@ -61,9 +111,15 @@ class MyWidget extends StatelessWidget {
                     ButtonPrimary(
                       text: 'Resister',
                       press: () {
+                        saveData(
+                          nama: namaCtrl.text,
+                          email: emailCtrl.text,
+                          password: passwordCtrl.text,
+                        );
+                        clear();
                         Navigator.pushNamed(
                           context,
-                          '/HomePage',
+                          '/LoginPage',
                         );
                       },
                     ),
@@ -72,15 +128,26 @@ class MyWidget extends StatelessWidget {
                     ),
                     TxtBack(
                       text: 'Kembali Ke Login',
-                      press: () {},
+                      press: () {
+                        Navigator.pushNamed(
+                          context,
+                          '/LoginPage',
+                        );
+                      },
                     ),
                   ],
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );
+  }
+
+  void clear() {
+    namaCtrl.text = '';
+    emailCtrl.text = '';
+    passwordCtrl.text = '';
   }
 }

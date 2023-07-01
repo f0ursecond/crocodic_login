@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 
 class PassField extends StatefulWidget {
   final String text;
+  final TextEditingController controller;
   const PassField({
     Key? key,
     required this.text,
+    required this.controller,
   }) : super(key: key);
 
   @override
@@ -18,6 +20,7 @@ class _PassFieldState extends State<PassField> {
   Widget build(BuildContext context) {
     return SizedBox(
       child: TextField(
+        controller: widget.controller,
         obscureText: obsecureText,
         decoration: InputDecoration(
           prefixIcon: const Icon(Icons.lock),

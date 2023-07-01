@@ -1,8 +1,10 @@
 import 'package:crocodic_login/controller/darkmode_controller.dart';
+import 'package:crocodic_login/views/authentication/loginpage/loginpage.dart';
 import 'package:crocodic_login/views/authentication/splashscreen/splash_screen.dart';
 import 'package:crocodic_login/views/calculator/calculator_view.dart';
 import 'package:crocodic_login/views/home/homepage.dart';
 import 'package:crocodic_login/views/lifecycle/lifecycle.dart';
+import 'package:crocodic_login/views/listmurid/list_murid.dart';
 import 'package:crocodic_login/views/onboard/onboardscreen.dart';
 import 'package:crocodic_login/views/scrollview/scrollview.dart';
 import 'package:crocodic_login/views/kelas/classlist.dart';
@@ -21,7 +23,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(
-      () => MaterialApp(
+      () => GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: cTheme.isDark.value ? ThemeData.dark() : ThemeData.light(),
@@ -31,10 +33,12 @@ class MyApp extends StatelessWidget {
           '/active': (context) => const ScreenActive(),
           '/onboard': (context) => const OnBoardingScreen(),
           '/RegisterPage': (context) => const MyWidget(),
+          '/LoginPage': (context) => const LoginPage(),
           '/HomePage': (context) => const HomePage(),
           '/ScrollPage': (context) => const ScrollViewPage(),
           '/CalculatorPage': (context) => const CalculatorView(),
           '/ClassListPage': (context) => const ClassListScreen(),
+          '/ListMurid': (context) => const ListMurid(),
         },
       ),
     );
