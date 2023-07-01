@@ -4,7 +4,7 @@ import 'package:crocodic_login/views/authentication/splashscreen/splash_screen.d
 import 'package:crocodic_login/views/calculator/calculator_view.dart';
 import 'package:crocodic_login/views/home/homepage.dart';
 import 'package:crocodic_login/views/lifecycle/lifecycle.dart';
-import 'package:crocodic_login/views/listmurid/list_murid.dart';
+import 'package:crocodic_login/views/viewdatabase/list_murid.dart';
 import 'package:crocodic_login/views/onboard/onboardscreen.dart';
 import 'package:crocodic_login/views/scrollview/scrollview.dart';
 import 'package:crocodic_login/views/kelas/classlist.dart';

@@ -13,12 +13,34 @@ class ClassListScreen extends StatefulWidget {
 class _ClassListScreenState extends State<ClassListScreen> {
   final controller = TextEditingController();
   List<Biodata> murid = [];
-
   @override
   void initState() {
     super.initState();
+    final data1 = Biodata(
+        nama: 'Budi',
+        kota: 'Boyolali',
+        tgllahir: '12/2/1992',
+        description: 'INI BAPAK BUDIII',
+        imageUrl:
+            'https://plus.unsplash.com/premium_photo-1683126899216-eb65393753c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWFufGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60');
+    final data2 = Biodata(
+        nama: 'Topik',
+        kota: 'Semarang',
+        tgllahir: '21/2/1932',
+        description: 'INI BAPAK TOPIK',
+        imageUrl:
+            'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60');
+    final data3 = Biodata(
+        nama: 'Bambang',
+        kota: 'Bali',
+        tgllahir: '21/10/1982',
+        description: 'INI BAPAK BAMBANG',
+        imageUrl:
+            'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60');
+    murid.addAll([data1, data2, data3]);
   }
 
+  List<Biodata> muridFilters = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,6 +64,21 @@ class _ClassListScreenState extends State<ClassListScreen> {
               ],
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              onChanged: searchMurid,
+              controller: controller,
+              decoration: InputDecoration(
+                border: const OutlineInputBorder(),
+                labelText: 'Search Murid',
+                suffixIcon: IconButton(
+                  onPressed: () => setState(() {}),
+                  icon: const Icon(Icons.find_in_page),
+                ),
+              ),
+            ),
+          ),
           Expanded(
             child: ListView.builder(
               itemCount: murid.length,
@@ -57,7 +94,7 @@ class _ClassListScreenState extends State<ClassListScreen> {
                     title: Text(item.nama),
                     subtitle: Text(item.description),
                     trailing: IconButton(
-                      onPressed: () => delete(idx: index),
+                      onPressed: () => delete(idx: newIdx(item)),
                       icon: const Icon(Icons.delete_outline),
                     ),
                     onTap: () {
@@ -97,6 +134,20 @@ class _ClassListScreenState extends State<ClassListScreen> {
       ),
     );
   }
+
+  void searchMurid(String query) {
+    final suggestion = murid.where((murid) {
+      final muridName = murid.nama.toLowerCase();
+      final input = query.toLowerCase();
+      return muridName.contains(input);
+    }).toList();
+
+    setState(() {
+      murid = suggestion;
+    });
+  }
+
+  int newIdx(Biodata data) => murid.indexOf(data);
 
   void delete({int? idx}) {
     if (idx != null) {

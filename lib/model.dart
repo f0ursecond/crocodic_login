@@ -53,4 +53,6 @@ class Biodata {
     this.tgllahir = tgllahir;
     this.description = description;
   }
+
+  toLowerCase() {}
 }
