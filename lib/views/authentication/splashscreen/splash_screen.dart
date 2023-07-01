@@ -12,7 +12,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 5), () {
-      Navigator.popAndPushNamed(context, '/ClassListScreen');
+      Navigator.popAndPushNamed(context, '/RegisterPage');
     });
   }
 
