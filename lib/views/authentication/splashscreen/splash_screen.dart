@@ -12,6 +12,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   @override
   void initState() {
     super.initState();
+    checkState();
   }
 
   Future<void> checkState() async {
