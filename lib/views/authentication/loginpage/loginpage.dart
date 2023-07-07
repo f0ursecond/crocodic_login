@@ -82,25 +82,11 @@ class _LoginPageState extends State<LoginPage> {
                       height: 10,
                     ),
                     ButtonPrimary(
-                      text: 'Login',
-                      press: () async {
-                        if (namaC.text.isEmpty ||
-                            emailC.text.isEmpty ||
-                            passC.text.isEmpty) {
-                          Get.snackbar(
-                              backgroundColor: Colors.red,
-                              colorText: Colors.white,
-                              'Error',
-                              'Semua Field Harus Diisi');
-                        } else {
-                          readData();
-                          const storage = FlutterSecureStorage();
-                          await storage.write(key: 'id', value: '1');
+                        text: 'Login',
+                        press: () {
                           Navigator.pushReplacementNamed(
                               context, '/ClassListPage');
-                        }
-                      },
-                    ),
+                        }),
                     const SizedBox(
                       height: 30,
                     ),

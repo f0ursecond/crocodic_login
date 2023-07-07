@@ -26,14 +26,14 @@ class PersonElement {
 }
 
 class Biodata {
-  String imageUrl;
+  String image;
   String nama;
   String kota;
   String tgllahir;
   String description;
 
   Biodata({
-    required this.imageUrl,
+    required this.image,
     required this.nama,
     required this.kota,
     required this.tgllahir,
@@ -41,13 +41,13 @@ class Biodata {
   });
 
   setData({
-    required String imageUrl,
+    required String image,
     required String nama,
     required String kota,
     required String tgllahir,
     required String description,
   }) {
-    this.imageUrl = imageUrl;
+    this.image = image;
     this.nama = nama;
     this.kota = kota;
     this.tgllahir = tgllahir;

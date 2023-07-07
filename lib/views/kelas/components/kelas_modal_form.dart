@@ -1,5 +1,8 @@
-import 'package:crocodic_login/model.dart';
+import 'dart:io';
 
+import 'package:crocodic_login/model.dart';
+import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 
 class ModalForm extends StatefulWidget {
@@ -21,48 +24,32 @@ class _ModalFormState extends State<ModalForm> {
   final descriptionController = TextEditingController();
   final kotaController = TextEditingController();
   final tgllahirController = TextEditingController();
-  final imageUrlController = TextEditingController();
 
   Biodata? biodata;
+  String _imagePath = '';
 
   @override
   void initState() {
     biodata = widget.data;
-    imageUrlController.text = biodata?.imageUrl ?? '';
+
     namaController.text = biodata?.nama ?? '';
     kotaController.text = biodata?.kota ?? '';
     tgllahirController.text = biodata?.tgllahir ?? '';
-    descriptionController.text = biodata?.description ?? '';
+    _imagePath = biodata?.image ?? '';
 
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      constraints: const BoxConstraints(
-        maxHeight: 500,
-        minWidth: double.infinity,
-      ),
+    return SizedBox(
+      height: 750,
       child: CustomScrollView(
         shrinkWrap: true,
         slivers: [
           SliverToBoxAdapter(
             child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  controller: imageUrlController,
-                  decoration: const InputDecoration(
-                    labelText: 'Gambar',
-                    border: OutlineInputBorder(),
-                  ),
-                  maxLines: 5,
-                  minLines: 1,
-                )),
-          ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: TextFieldBang(
                 controller: namaController,
                 label: 'Nama',
@@ -71,7 +58,7 @@ class _ModalFormState extends State<ModalForm> {
           ),
           SliverToBoxAdapter(
             child: Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: TextFieldBang(
                 controller: kotaController,
                 label: 'Kota',
@@ -80,7 +67,7 @@ class _ModalFormState extends State<ModalForm> {
           ),
           SliverToBoxAdapter(
             child: Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: TextFieldBang(
                 controller: tgllahirController,
                 label: 'Tanggal Lahir | DD/MM/YYYY',
@@ -89,7 +76,7 @@ class _ModalFormState extends State<ModalForm> {
           ),
           SliverToBoxAdapter(
             child: Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: TextField(
                 controller: descriptionController,
                 decoration: const InputDecoration(
@@ -99,6 +86,39 @@ class _ModalFormState extends State<ModalForm> {
                 maxLines: 5,
                 minLines: 1,
               ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Column(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: Visibility(
+                    visible: _imagePath.isNotEmpty,
+                    child: Image.file(
+                      File(_imagePath),
+                      width: 100,
+                      height: 100,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () => _pickImage(ImageSource.camera),
+                      child: const Text('Ambil dari Kamera'),
+                    ),
+                    const SizedBox(width: 8),
+                    ElevatedButton(
+                      onPressed: () => _pickImage(ImageSource.gallery),
+                      child: const Text('Ambil dari Galeri'),
+                    )
+                  ],
+                )
+              ],
             ),
           ),
           SliverToBoxAdapter(
@@ -122,9 +142,23 @@ class _ModalFormState extends State<ModalForm> {
     );
   }
 
+  Future _pickImage(ImageSource source) async {
+    try {
+      final picker = ImagePicker();
+      final pickedFile = await picker.pickImage(source: source);
+      if (pickedFile != null) {
+        setState(() {
+          _imagePath = pickedFile.path;
+        });
+      }
+    } on PlatformException catch (e) {
+      debugPrint("Failed to pick image: $e");
+    }
+  }
+
   editItem(BuildContext context) {
     setState(() {
-      if (imageUrlController.text.isEmpty) {
+      if (_imagePath.isEmpty) {
         showAlert(context: context, message: 'Gambar tidak boleh kosong');
         return;
       }
@@ -147,14 +181,9 @@ class _ModalFormState extends State<ModalForm> {
         return;
       }
 
-      if (!isURLValid(imageUrlController.text)) {
-        showAlert(context: context, message: 'URL Gambar tidak valid');
-        return;
-      }
-
       if (biodata == null) {
         biodata = Biodata(
-          imageUrl: imageUrlController.text,
+          image: _imagePath,
           nama: namaController.text,
           kota: kotaController.text,
           tgllahir: tgllahirController.text,
@@ -162,7 +191,7 @@ class _ModalFormState extends State<ModalForm> {
         );
       } else {
         biodata?.setData(
-          imageUrl: imageUrlController.text,
+          image: _imagePath,
           nama: namaController.text,
           kota: kotaController.text,
           tgllahir: tgllahirController.text,

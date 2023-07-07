@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:crocodic_login/model.dart';
 import 'package:crocodic_login/views/kelas/components/kelas_modal_form.dart';
 import 'package:flutter/material.dart';
@@ -34,8 +36,9 @@ class _AboutMePageState extends State<AboutMePage> {
           slivers: [
             SliverToBoxAdapter(
               child: SizedBox(
-                child: Image(
-                  image: NetworkImage(data?.imageUrl ?? ''),
+                child: Image.file(
+                  File(data?.image ?? ''),
+                  height: 400,
                 ),
               ),
             ),
