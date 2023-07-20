@@ -19,27 +19,32 @@ class _PassFieldState extends State<PassField> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      child: TextField(
-        controller: widget.controller,
-        obscureText: obsecureText,
-        decoration: InputDecoration(
-          prefixIcon: const Icon(Icons.lock),
-          suffixIcon: IconButton(
-            onPressed: () {
-              setState(() {
-                obsecureText = !obsecureText;
-              });
-            },
-            icon: Icon(
-              obsecureText
-                  ? Icons.visibility_off_outlined
-                  : Icons.visibility_outlined,
+      child: TextFormField(
+          controller: widget.controller,
+          obscureText: obsecureText,
+          decoration: InputDecoration(
+            prefixIcon: const Icon(Icons.lock),
+            suffixIcon: IconButton(
+              onPressed: () {
+                setState(() {
+                  obsecureText = !obsecureText;
+                });
+              },
+              icon: Icon(
+                obsecureText
+                    ? Icons.visibility_off_outlined
+                    : Icons.visibility_outlined,
+              ),
             ),
+            border: const OutlineInputBorder(),
+            labelText: widget.text,
           ),
-          border: const OutlineInputBorder(),
-          labelText: widget.text,
-        ),
-      ),
+          validator: (value) {
+            if (value != null && value.length <= 5) {
+              return 'Tidak boleh kosong, minimal 5 karakter';
+            }
+            return null;
+          }),
     );
   }
 }

@@ -4,6 +4,7 @@ class TxtField extends StatelessWidget {
   final String text;
   final Icon iconcuy;
   final TextEditingController controller;
+
   const TxtField({
     Key? key,
     required this.text,
@@ -21,6 +22,12 @@ class TxtField extends StatelessWidget {
           border: const OutlineInputBorder(),
           labelText: text,
         ),
+        validator: (value) {
+          if (value != null && value.length <= 5) {
+            return 'Tidak boleh kosong, minimal 5 karakter';
+          }
+          return null;
+        },
       ),
     );
   }

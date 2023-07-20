@@ -21,6 +21,8 @@ class _LoginPageState extends State<LoginPage> {
     final emailC = TextEditingController();
     final passC = TextEditingController();
 
+    final formKey = GlobalKey<FormState>();
+
     Future<void> readData() async {
       final database = await databaseLocal;
       final datas = await database.userDao.findAllUser();
@@ -41,6 +43,8 @@ class _LoginPageState extends State<LoginPage> {
         ],
       ),
       body: Form(
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        key: formKey,
         child: SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -79,8 +83,11 @@ class _LoginPageState extends State<LoginPage> {
                     ButtonPrimary(
                         text: 'Login',
                         press: () {
-                          Navigator.pushReplacementNamed(
-                              context, '/ClassListPage');
+                          final isValid = formKey.currentState!.validate();
+                          if (isValid) {
+                            Navigator.pushReplacementNamed(
+                                context, '/ClassListPage');
+                          }
                         }),
                     const SizedBox(
                       height: 30,
