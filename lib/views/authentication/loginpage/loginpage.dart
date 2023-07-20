@@ -1,11 +1,6 @@
 import 'package:crocodic_login/db_user/app_database.dart';
-import 'package:crocodic_login/db_user/user.dart';
 import 'package:crocodic_login/views/authentication/components/btnprimary.dart';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:get/get.dart';
-
 import '../components/passfield.dart';
 import '../components/txtfield.dart';
 
