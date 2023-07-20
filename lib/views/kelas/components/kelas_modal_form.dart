@@ -95,7 +95,7 @@ class _ModalFormState extends State<ModalForm> {
               child: TextField(
                 controller: hobiController,
                 decoration: const InputDecoration(
-                  labelText: 'Hobi',
+                  labelText: 'Hobii',
                   border: OutlineInputBorder(),
                 ),
                 maxLines: 5,
