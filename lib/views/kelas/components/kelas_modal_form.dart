@@ -24,6 +24,7 @@ class _ModalFormState extends State<ModalForm> {
   final descriptionController = TextEditingController();
   final kotaController = TextEditingController();
   final tgllahirController = TextEditingController();
+  final hobiController = TextEditingController();
 
   Biodata? biodata;
   String _imagePath = '';
@@ -81,6 +82,20 @@ class _ModalFormState extends State<ModalForm> {
                 controller: descriptionController,
                 decoration: const InputDecoration(
                   labelText: 'Deskripsi',
+                  border: OutlineInputBorder(),
+                ),
+                maxLines: 5,
+                minLines: 1,
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: hobiController,
+                decoration: const InputDecoration(
+                  labelText: 'Hobi',
                   border: OutlineInputBorder(),
                 ),
                 maxLines: 5,
